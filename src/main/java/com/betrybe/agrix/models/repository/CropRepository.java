@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.Query;
  * CropRepository interface.
  */
 public interface CropRepository extends JpaRepository<Crop, Long> {
-    @Query(
-      value = "SELECT c FROM Crop c WHERE c.harvestDate BETWEEN :start AND :end"
-  )
+  @Query(
+          value = "SELECT c FROM Crop c WHERE c.harvestDate BETWEEN :start AND :end"
+    )
     List<Crop> findAllByHarvestDateBetween(LocalDate start, LocalDate end);
 }
