@@ -3,6 +3,8 @@ package com.betrybe.agrix.service;
 import com.betrybe.agrix.exception.CropNotFoundException;
 import com.betrybe.agrix.models.entity.Crop;
 import com.betrybe.agrix.models.repository.CropRepository;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +37,9 @@ public class CropService {
     }
 
     return cropRepository.findById(id).get();
+  }
+
+  public List<Crop> findAllByHarvestDateBetween(LocalDate start, LocalDate end) {
+    return cropRepository.findAllByHarvestDateBetween(start, end);
   }
 }
