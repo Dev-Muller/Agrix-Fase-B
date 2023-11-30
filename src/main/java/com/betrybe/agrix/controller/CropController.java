@@ -3,7 +3,6 @@ package com.betrybe.agrix.controller;
 import com.betrybe.agrix.controller.dto.CropDto;
 import com.betrybe.agrix.models.entity.Crop;
 import com.betrybe.agrix.service.CropService;
-
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +43,17 @@ public class CropController {
     return new ResponseEntity<>(dtoCrop, HttpStatus.OK);
   }
 
+  /**
+   * Get a crop by id.
+   */
   @GetMapping("/{id}")
   public ResponseEntity<CropDto> getCropById(@PathVariable Long id) {
     return new ResponseEntity<>(CropDto.toDto(cropService.getCropById(id)), HttpStatus.OK);
   }
 
+  /**
+   * Get all crops between two dates.
+   */
   @GetMapping("/search")
   public ResponseEntity<List<CropDto>> findAllByHarvestDateBetween(LocalDate start, LocalDate end) {
     List<Crop> crop = cropService.findAllByHarvestDateBetween(start, end);
