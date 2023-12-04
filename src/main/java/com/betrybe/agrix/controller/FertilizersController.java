@@ -3,9 +3,7 @@ package com.betrybe.agrix.controller;
 import com.betrybe.agrix.controller.dto.FertilizersDto;
 import com.betrybe.agrix.models.entity.Fertilizers;
 import com.betrybe.agrix.service.FertilizersService;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

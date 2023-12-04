@@ -32,7 +32,7 @@ public class FertilizersService {
   /**
    * Get all fertilizer.
    */
-   public List<Fertilizers> getAllFertilizers() {
-     return fertilizersRepository.findAll();
-   }
+  public List<Fertilizers> getAllFertilizers() {
+    return fertilizersRepository.findAll();
+  }
 }
