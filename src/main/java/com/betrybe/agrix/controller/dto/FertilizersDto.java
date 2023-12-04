@@ -10,13 +10,13 @@ public record FertilizersDto(
     String name,
     String brand,
     String composition) {
-    public Fertilizers toEntity() {
-        return new Fertilizers(id, name, brand, composition, null);
-    }
+  public Fertilizers toEntity() {
+    return new Fertilizers(id, name, brand, composition, null);
+  }
 
-    public static FertilizersDto toDto(Fertilizers fertilizers) {
-        return new FertilizersDto(fertilizers.getId(), fertilizers.getName(), fertilizers.getBrand(),
-            fertilizers.getComposition());
-    }
-    
+  public static FertilizersDto toDto(Fertilizers fertilizers) {
+    return new FertilizersDto(fertilizers.getId(), fertilizers.getName(), fertilizers.getBrand(),
+        fertilizers.getComposition());
+  }
+
 }

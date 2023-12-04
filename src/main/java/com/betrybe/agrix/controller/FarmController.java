@@ -84,8 +84,8 @@ public class FarmController {
 
     List<CropDto> dtoCrops = farm.getCrops().stream()
         .map(crop -> new CropDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
-            crop.getFarm().getId(), crop.getPlantedDate(), crop.getHarvestDate()
-            , crop.getFertilizers()))
+            crop.getFarm().getId(), crop.getPlantedDate(), crop.getHarvestDate(),
+            crop.getFertilizers()))
         .toList();
 
     return new ResponseEntity<>(dtoCrops, HttpStatus.OK);

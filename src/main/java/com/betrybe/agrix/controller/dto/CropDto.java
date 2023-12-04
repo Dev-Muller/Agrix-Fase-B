@@ -20,6 +20,9 @@ public record CropDto(
     return new CropDto(id, name, plantedArea, farmId, plantedDate, harvestDate, fertilizers);
   }
 
+  /**
+   * CropDto constructor.
+   */
   public static CropDto toDto(Crop crop) {
     return new CropDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
         crop.getFarm().getId(), crop.getPlantedDate(), crop.getHarvestDate(),

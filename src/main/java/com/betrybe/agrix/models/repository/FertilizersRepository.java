@@ -1,8 +1,7 @@
 package com.betrybe.agrix.models.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.betrybe.agrix.models.entity.Fertilizers;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * FertilizersRepository interface.
