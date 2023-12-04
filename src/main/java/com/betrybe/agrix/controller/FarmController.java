@@ -7,7 +7,6 @@ import com.betrybe.agrix.models.entity.Farm;
 import com.betrybe.agrix.service.CropService;
 import com.betrybe.agrix.service.FarmService;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,7 +70,7 @@ public class FarmController {
 
     CropDto dtoCrop = new CropDto(savedCrop.getId(), savedCrop.getName(),
         savedCrop.getPlantedArea(), savedCrop.getFarm().getId(),
-        savedCrop.getPlantedDate(), savedCrop.getHarvestDate());
+        savedCrop.getPlantedDate(), savedCrop.getHarvestDate(), savedCrop.getFertilizers());
 
     return new ResponseEntity<>(dtoCrop, HttpStatus.CREATED);
   }
@@ -85,8 +84,9 @@ public class FarmController {
 
     List<CropDto> dtoCrops = farm.getCrops().stream()
         .map(crop -> new CropDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
-            crop.getFarm().getId(), crop.getPlantedDate(), crop.getHarvestDate()))
-        .collect(Collectors.toList());
+            crop.getFarm().getId(), crop.getPlantedDate(), crop.getHarvestDate()
+            , crop.getFertilizers()))
+        .toList();
 
     return new ResponseEntity<>(dtoCrops, HttpStatus.OK);
   }
