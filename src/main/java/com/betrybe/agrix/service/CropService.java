@@ -2,6 +2,7 @@ package com.betrybe.agrix.service;
 
 import com.betrybe.agrix.exception.CropNotFoundException;
 import com.betrybe.agrix.models.entity.Crop;
+import com.betrybe.agrix.models.entity.Fertilizers;
 import com.betrybe.agrix.models.repository.CropRepository;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,6 +18,9 @@ public class CropService {
 
   @Autowired
   CropRepository cropRepository;
+
+  @Autowired
+  FertilizersService fertilzersService;
 
   public Crop createCrop(Crop crop) {
     return cropRepository.save(crop);
@@ -40,5 +44,15 @@ public class CropService {
 
   public List<Crop> findAllByHarvestDateBetween(LocalDate start, LocalDate end) {
     return cropRepository.findAllByHarvestDateBetween(start, end);
+  }
+
+  /**
+   * Insert a fertilizer to a crop.
+   */
+  public Crop insertFertilizerToCrop(Long cropId, Long fertilizerId) {
+    Crop crop = getCropById(cropId);
+    Fertilizers fertilizers = fertilzersService.getFertilizersById(fertilizerId);
+    crop.getFertilizers().add(fertilizers);
+    return cropRepository.save(crop);
   }
 }

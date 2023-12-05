@@ -1,6 +1,7 @@
 package com.betrybe.agrix.controller;
 
 import com.betrybe.agrix.controller.dto.CropDto;
+import com.betrybe.agrix.controller.dto.CropWithFertilizerDto;
 import com.betrybe.agrix.models.entity.Crop;
 import com.betrybe.agrix.service.CropService;
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -63,6 +65,18 @@ public class CropController {
             newCrop.getPlantedDate(), newCrop.getHarvestDate()))
         .toList();
     return new ResponseEntity<>(dtoCrop, HttpStatus.OK);
+  }
+
+  /**
+   * Create a cropWithFertilizers.
+   */
+  @PostMapping("/{cropId}/fertilizers/{fertilizerId}")
+  public ResponseEntity<String> insertFertilizerToCrop(@PathVariable Long cropId,
+      @PathVariable Long fertilizerId) {
+    CropWithFertilizerDto.toDto(cropService
+        .insertFertilizerToCrop(cropId, fertilizerId));
+    return new ResponseEntity<>("Fertilizante e plantação associados com sucesso!",
+        HttpStatus.CREATED);
   }
 
 }

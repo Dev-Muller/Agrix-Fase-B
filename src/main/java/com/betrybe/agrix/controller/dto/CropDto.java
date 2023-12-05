@@ -1,9 +1,7 @@
 package com.betrybe.agrix.controller.dto;
 
 import com.betrybe.agrix.models.entity.Crop;
-import com.betrybe.agrix.models.entity.Fertilizers;
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * CropDto class.
