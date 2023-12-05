@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,5 +52,15 @@ public class FertilizersController {
             fertilizer.getBrand(), fertilizer.getComposition()))
         .toList();
     return new ResponseEntity<>(fertilizers, HttpStatus.OK);
+  }
+
+  /**
+   * Get a fertilizer by id.
+   */
+  @GetMapping("/{id}")
+  public ResponseEntity<FertilizersDto> getFertilizersById(@PathVariable Long id) {
+    Fertilizers fertilizers = fertilizersService.getFertilizersById(id);
+    FertilizersDto fertilizersDto = FertilizersDto.toDto(fertilizers);
+    return new ResponseEntity<>(fertilizersDto, HttpStatus.OK);
   }
 }

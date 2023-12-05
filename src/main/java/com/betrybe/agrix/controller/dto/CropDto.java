@@ -14,10 +14,10 @@ public record CropDto(
     Double plantedArea,
     Long farmId,
     LocalDate plantedDate,
-    LocalDate harvestDate,
-    List<Fertilizers> fertilizers) {
-  public CropDto toCropDto() {
-    return new CropDto(id, name, plantedArea, farmId, plantedDate, harvestDate, fertilizers);
+    LocalDate harvestDate) {
+  // List<Fertilizers> fertilizers
+  public CropDto toEntity() {
+    return new CropDto(id, name, plantedArea, farmId, plantedDate, harvestDate);
   }
 
   /**
@@ -25,7 +25,6 @@ public record CropDto(
    */
   public static CropDto toDto(Crop crop) {
     return new CropDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
-        crop.getFarm().getId(), crop.getPlantedDate(), crop.getHarvestDate(),
-        crop.getFertilizers());
+        crop.getFarm().getId(), crop.getPlantedDate(), crop.getHarvestDate());
   }
 }

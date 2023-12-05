@@ -70,7 +70,7 @@ public class FarmController {
 
     CropDto dtoCrop = new CropDto(savedCrop.getId(), savedCrop.getName(),
         savedCrop.getPlantedArea(), savedCrop.getFarm().getId(),
-        savedCrop.getPlantedDate(), savedCrop.getHarvestDate(), savedCrop.getFertilizers());
+        savedCrop.getPlantedDate(), savedCrop.getHarvestDate());
 
     return new ResponseEntity<>(dtoCrop, HttpStatus.CREATED);
   }
@@ -84,8 +84,7 @@ public class FarmController {
 
     List<CropDto> dtoCrops = farm.getCrops().stream()
         .map(crop -> new CropDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
-            crop.getFarm().getId(), crop.getPlantedDate(), crop.getHarvestDate(),
-            crop.getFertilizers()))
+            crop.getFarm().getId(), crop.getPlantedDate(), crop.getHarvestDate()))
         .toList();
 
     return new ResponseEntity<>(dtoCrops, HttpStatus.OK);
