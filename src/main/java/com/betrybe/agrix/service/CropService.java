@@ -55,4 +55,15 @@ public class CropService {
     crop.getFertilizers().add(fertilizers);
     return cropRepository.save(crop);
   }
+
+  /**
+   * Get crop by id with fertilizers.
+   */
+  public List<Fertilizers> getCropByIdWithFertilizers(Long id) {
+    Optional<Crop> crop = cropRepository.findById(id);
+    if (crop.isEmpty()) {
+      throw new CropNotFoundException();
+    }
+    return crop.get().getFertilizers();
+  }
 }
